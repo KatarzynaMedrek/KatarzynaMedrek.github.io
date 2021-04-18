@@ -8,8 +8,10 @@
 	<link rel="stylesheet" type="text/css" href="styles3.css">
 	<script src="vue.js" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+	<script src="./cities.js"></script>
 </head>
-<body class ="home">
+<body class="home">
+	
       <nav class ="usun">
       	<a href="#">Gmail</a>
       	<a href="#">Grafika</a>
@@ -94,6 +96,16 @@ width=14px;>
     </div>
     <div id="wszystkiewyniki">
         <p id="numer">Około 23 900 000 wyników (0.61 s) </p>
+	    
+	  <div class="cities">
+           <a class="link"><b>Lista miast:</b></a>
+          <ul>
+            <li v-for="city in filteredCities">
+              {{ city.name }}
+            </li>
+          </ul>
+        </div>
+	    
         <div class="wynik">
             <h2>Dalmatyńczyk | wszystko o rasie w Magazynie o zwierzętach ...</h2>
             <a>https://www.zooplus.pl/magazyn/psy/rasy-psow/dalmatynczyk </a> <button>▼</button>
@@ -241,4 +253,40 @@ width=14px;>
     </div>
 
 </body>
+	
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      googleSearch: '',
+      cities: window.cities,
+    },
+
+    computed: {
+      filteredCities: function() {
+        let result = this.cities.filter(city => city.name.includes(this.googleSearch));
+        if(result.length>10){
+          return result.slice(1,11);
+        }
+        return result;
+      }
+    },
+
+    updated() {
+        this.$nextTick(() => {
+
+        if (this.googleSearch.length > 0) {
+
+        this.$refs.second.focus();
+
+        } else {
+
+        this.$refs.first.focus();
+
+        }
+      })
+    }
+});
+</script>	
+	
 </html>
