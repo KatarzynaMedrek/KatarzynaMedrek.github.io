@@ -131,6 +131,30 @@
     font-family: 'Arial';
 }
 
+.results .wszystkiewyniki .cities{
+		margin-top: 20px;
+		margin-left: 11px;
+	
+}
+
+.results .wszystkiewyniki .cities a{
+		color: black;
+		font-size: 20px;
+		font-weight:bold;
+		margin-bottom: 1px;
+		margin-top: 10px;
+	}
+
+.results .wszystkiewyniki .cities ul li{
+		list-style: decimal;
+		font-size: 15px;
+		display: list-item;
+		margin-left: 15px;
+		padding: 5px;
+		margin-top: 10px;
+		margin-bottom: 7px;
+	}
+
 .results #numer {
     font-size: 0.8rem;
     color: gray;
